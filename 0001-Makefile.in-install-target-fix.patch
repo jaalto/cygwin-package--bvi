@@ -1,0 +1,46 @@
+From c9e54b8f903d290452277d2d5d6db843e8ee6193 Mon Sep 17 00:00:00 2001
+From: Jari Aalto <jari.aalto@cante.net>
+Date: Thu, 6 Mar 2008 22:51:32 +0200
+Subject: [PATCH] Makefile.in: install target fix
+
+Signed-off-by: Jari Aalto <jari.aalto@cante.net>
+---
+ Makefile.in |   11 ++++++-----
+ 1 files changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index 55e9b25..e57b477 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -58,7 +58,7 @@ bmore: $(BMOBJ)
+ 	$(CC) $(CFLAGS) $(DEFS) -c $<
+ 
+ bmore.o: bmore.c
+-	$(CC) $(CFLAGS) $(DEFS) -DHELPFILE=\"$(libdir)/bmore.help\" -c $<
++	$(CC) $(CFLAGS) $(DEFS) -DHELPFILE=\"/usr/share/bvi/bmore.help\" -c $<
+ 
+ 
+ install: all installdirs
+@@ -66,14 +66,15 @@ install: all installdirs
+ 	@$(INSTALL_DATA) bvi.1 bmore.1 $(man1dir)
+ 	@$(INSTALL_PROGRAM) -s bvi $(bindir)
+ 	@$(INSTALL_PROGRAM) -s bmore $(bindir)
+-	@$(INSTALL_DATA) bmore.help $(libdir)
++	@$(INSTALL_PROGRAM) -d $(DESTDIR)/usr/share/bvi
++	@$(INSTALL_DATA) bmore.help $(DESTDIR)/usr/share/bvi
+ 	@if [ -f $(bindir)/bview ]; then rm $(bindir)/bview; fi
+ 	@if [ -f $(bindir)/bvedit ]; then rm $(bindir)/bvedit; fi
+-	@ln $(bindir)/bvi $(bindir)/bview
+-	@ln $(bindir)/bvi $(bindir)/bvedit
++	# @ln $(bindir)/bvi $(bindir)/bview
++	# @ln $(bindir)/bvi $(bindir)/bvedit
+ 
+ installdirs:
+-	$(SHELL) ${srcdir}/mkinstalldirs $(bindir) $(libdir) $(man1dir)
++	$(SHELL) ${srcdir}/mkinstalldirs $(bindir) $(man1dir)
+ 
+ uninstall:
+ 	@echo "Uninstalling bvi"
+-- 
+1.5.3.8
+
