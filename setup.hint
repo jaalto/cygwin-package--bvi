@@ -2,4 +2,4 @@ sdesc: "Binary vi-like editor"
 ldesc: "A display-oriented editor for binary files, based on the vi text
 editor."
 category: Editors
-requires: cygwin libncurses8
+requires: cygwin libncursesw10

@@ -8,7 +8,7 @@ editor.
 
 Runtime requirements:
   cygwin
-  libncurses8
+  libncursesw10
 
 Build requirements:
   cygwin
@@ -52,7 +52,7 @@ Build instructions:
 ------------------------------------------
 
 Files included in the binary distribution:
-  See content of *.tar.gz
+  See Cygwin package archive
 
 ------------------------------------------
 
@@ -60,8 +60,12 @@ Port Notes:
 - bvedit, bview: No manual pages. They are also same as "bvi",
   so they were not installed. See Makefile::install and hardlinking.
 
+----- version 1.3.2-2 -----
+- Cygwin package update 2013-09-14 Jari Aalto
+- Link with latest libncursesw10
+
 ----- version 1.3.2-1 -----
 - Initial release 2008-03-06 Jari Aalto
 
-Cygwin port maintained by: Jari Aalto <jari.aalto@cante.net>
-Copyright (C) 2008 Jari Aalto; Licensed under GPL v2 or later
+Cygwin port maintained by: user <jari.aalto@cante.net>
+Copyright (C) 2008-2013 Jari Aalto; Licensed under GPL v2 or later
